@@ -1,6 +1,6 @@
 import Testing
 
-@testable import AdventOfCode
+@testable import AdventOfCodeKit
 
 // Make a copy of this file for every day to ensure the provided smoke tests
 // pass.

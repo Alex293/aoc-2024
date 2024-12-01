@@ -1,4 +1,5 @@
 import ArgumentParser
+import AdventOfCodeKit
 
 // Add each new day implementation to this array:
 let allChallenges: [any AdventDay] = [

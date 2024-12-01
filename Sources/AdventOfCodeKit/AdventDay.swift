@@ -2,7 +2,7 @@
 @_exported import Collections
 import Foundation
 
-protocol AdventDay: Sendable {
+public protocol AdventDay: Sendable {
   associatedtype Answer = Int
 
   /// The day of the Advent of Code challenge.
@@ -21,12 +21,12 @@ protocol AdventDay: Sendable {
   func part2() async throws -> Answer
 }
 
-struct PartUnimplemented: Error {
-  let day: Int
-  let part: Int
+public struct PartUnimplemented: Error {
+  public let day: Int
+  public let part: Int
 }
 
-extension AdventDay {
+public extension AdventDay {
   // Find the challenge day from the type name.
   static var day: Int {
     let typeName = String(reflecting: Self.self)

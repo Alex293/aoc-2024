@@ -1,6 +1,6 @@
 import Testing
 
-@testable import AdventOfCode
+@testable import AdventOfCodeKit
 
 // One off test to validate that basic data load testing works
 struct AdventDayTests {

@@ -1,17 +1,22 @@
-import Algorithms
 import RegexBuilder
 
-struct Day01: AdventDay {
-  var data: String
+public struct Day01_RegexBuilder: AdventDay {
+  public var data: String
 
-  nonisolated(unsafe) static let lineParser = Regex {
+  public init(data: String) {
+    self.data = data
+  }
+
+  public static var day: Int { 1 }
+
+  nonisolated(unsafe) private static let lineParser = Regex {
     Capture { OneOrMore(.digit) } transform: { Int($0)! }
     "   "
     Capture { OneOrMore(.digit) } transform: { Int($0)! }
     Anchor.endOfLine
   }
 
-  func part1() -> Any {
+  public func part1() -> Any {
     let (firstList, secondList) = data
       .matches(of: Self.lineParser)
       .reduce(into: ([Int](), [Int]())) { $0.0.append($1.1) ; $0.1.append($1.2) }
@@ -19,7 +24,7 @@ struct Day01: AdventDay {
       .reduce(0) { $0 + abs($1.1 - $1.0) }
   }
 
-  func part2() -> Any {
+  public func part2() -> Any {
     let (list, occurences) = data
       .matches(of: Self.lineParser)
       .reduce(into: ([Int](), [Int: Int]())) {
