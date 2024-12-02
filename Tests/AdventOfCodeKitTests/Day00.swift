@@ -34,3 +34,4 @@ struct Day00Tests {
     #expect(String(describing: challenge.part2()) == "32000")
   }
 }
+

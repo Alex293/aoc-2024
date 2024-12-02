@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Day01_RegexLiteral: AdventDay {
+public struct Day01_RegexLiteral_Reserve: AdventDay {
   public var data: String
 
   public init(data: String) {
@@ -11,10 +11,20 @@ public struct Day01_RegexLiteral: AdventDay {
 
   public func part1() -> Any {
     let lineParser = /(\d+)   (\d+)/
-    let (firstList, secondList) = data
+    let matches = data
       .matches(of: lineParser)
-      .reduce(into: ([Int](), [Int]())) { $0.0.append(Int($1.1)!) ; $0.1.append(Int($1.2)!) }
-    return zip(firstList.sorted(), secondList.sorted())
+    let count = matches.count
+    var left = [Int]()
+    left.reserveCapacity(count)
+    var right = [Int]()
+    right.reserveCapacity(count)
+
+    for match in matches {
+      left.append(Int(match.1)!)
+      right.append(Int(match.2)!)
+    }
+
+    return zip(left.sorted(), right.sorted())
       .reduce(0) { $0 + abs($1.1 - $1.0) }
   }
 
