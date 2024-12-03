@@ -1,7 +1,7 @@
 import Foundation
 
 public struct Day01_Manual_Range: AdventDay {
-  public var data: String
+  public let data: String
 
   public init(data: String) {
     self.data = data
