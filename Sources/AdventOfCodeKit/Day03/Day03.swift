@@ -16,15 +16,18 @@ public struct Day03: AdventDay {
   }
 
   public func part2() -> Any {
-    let filters = (
-      data.matches(of: /do\(\)/).map { ($0.startIndex, true) }
-      + data.matches(of: /don't\(\)/).map { ($0.startIndex, false) }
-    ).sorted(by: { $0.0 > $1.0 })
-    return data
-      .matches(of: /mul\((\d{1,3}),(\d{1,3})\)/)
-      .filter { match in
-        filters.first(where: { $0.0 < match.output.1.startIndex })?.1 ?? true
+    data
+      .matches(of: /(do\(\)|don't\(\)|mul\((\d{1,3}),(\d{1,3})\))/)
+      .reduce(into: (0, true)) { result, match in
+        switch match.output.1.count {
+        case 4: result.1 = true
+        case 7: result.1 = false
+        default:
+          if result.1 {
+            result.0 += Int(match.output.2!)! &* Int(match.output.3!)!
+          }
+        }
       }
-      .reduce(into: 0) { $0 += Int($1.1)! &* Int($1.2)! }
+      .0
   }
 }
