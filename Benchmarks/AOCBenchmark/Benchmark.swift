@@ -13,29 +13,16 @@ let benchmarks = {
 //    benchmark.stopMeasurement()
 //  }
 //
-//  Benchmark("Day04 - Part 1", configuration: configuration) { benchmark in
-//    let day = Day04()
-//    benchmark.startMeasurement()
-//    blackHole(day.part1())
-//    benchmark.stopMeasurement()
-//  }
-//
-//  Benchmark("Day04 - Part 2", configuration: configuration) { benchmark in
-//    let day = Day04()
-//    benchmark.startMeasurement()
-//    blackHole(day.part2())
-//    benchmark.stopMeasurement()
-//  }
 
-  Benchmark("Day05 - Part 1", configuration: configuration) { benchmark in
-    let day = Day05_File()
+  Benchmark("Day04 - Part 1", configuration: configuration) { benchmark in
+    let day = Day04_File()
     benchmark.startMeasurement()
     blackHole(day.part1())
     benchmark.stopMeasurement()
   }
 
-  Benchmark("Day05 - Part 2", configuration: configuration) { benchmark in
-    let day = Day05_File()
+  Benchmark("Day04 - Part 2", configuration: configuration) { benchmark in
+    let day = Day04_File()
     benchmark.startMeasurement()
     blackHole(day.part2())
     benchmark.stopMeasurement()
